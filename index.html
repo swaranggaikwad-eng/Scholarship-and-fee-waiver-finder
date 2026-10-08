@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scholarship & Fee Waiver Finder | One Profile → Multiple Matches</title>
+  <meta name="description" content="Discover verified government, private scholarships and tuition fee waivers matched specifically to your education, category, income, and academic profile." />
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header & Navigation Bar -->
+    <header class="navbar">
+      <div class="container nav-content">
+        <!-- Logo -->
+        <a href="#" class="brand-logo" onclick="switchView('home'); return false;">
+          <div class="brand-icon">🎓</div>
+          <div class="brand-text">Scholarship <span>Finder</span></div>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+          <li class="nav-link active" data-view="home">Home</li>
+          <li class="nav-link" data-view="finder">Find Scholarships</li>
+          <li class="nav-link" data-view="waivers">Fee Waivers</li>
+          <li class="nav-link" data-view="checker">Eligibility Checker</li>
+          <li class="nav-link" data-view="ai-matches">AI Matches</li>
+          <li class="nav-link" data-view="about">About</li>
+          <li class="nav-link" data-view="contact">Contact</li>
+          <li class="nav-link" data-view="dashboard">Dashboard</li>
+          <li class="nav-link" data-view="admin">Admin Portal</li>
+        </ul>
+
+        <!-- Action Buttons -->
+        <div class="nav-actions">
+          <!-- Theme Toggle -->
+          <button class="btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Theme">
+            🌙
+          </button>
+
+          <!-- Notification Bell -->
+          <div style="position:relative;">
+            <button class="btn-icon" onclick="toggleNotificationDropdown()" title="Notifications">
+              🔔
+              <span id="notif-badge" class="badge-dot"></span>
+            </button>
+            <div id="notif-popover" style="display:none; position:absolute; top:3.25rem; right:0; width:300px; background:var(--bg-surface-elevated); border:1px solid var(--border-color); border-radius:var(--radius-xl); box-shadow:var(--shadow-lg); z-index:60;"></div>
+          </div>
+
+          <!-- Auth Button -->
+          <button class="btn btn-primary" onclick="openAuthModal()">
+            Student Login
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main View Container -->
+    <main id="view-container" class="main-content">
+      <!-- Dynamic Views Rendered by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer style="background:var(--bg-surface); border-top:1px solid var(--border-color); padding:3.5rem 0 2rem; margin-top:4rem;">
+      <div class="container">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:2rem; margin-bottom:2.5rem;">
+          <div>
+            <div class="brand-logo" style="margin-bottom:1rem;">
+              <div class="brand-icon">🎓</div>
+              <div class="brand-text">Scholarship <span>Finder</span></div>
+            </div>
+            <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.6;">
+              Empowering students across India with automated financial assistance and tuition fee waiver matching using real verified datasets.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="font-size:1rem; margin-bottom:1rem;">Quick Navigation</h4>
+            <ul style="list-style:none; font-size:0.88rem; display:flex; flex-direction:column; gap:0.5rem; color:var(--text-secondary);">
+              <li><a href="#" onclick="switchView('home'); return false;">Home Landing Page</a></li>
+              <li><a href="#" onclick="switchView('checker'); return false;">Student Eligibility Checker</a></li>
+              <li><a href="#" onclick="switchView('finder'); return false;">Scholarships & Fee Waiver Directory</a></li>
+              <li><a href="#" onclick="switchView('ai-matches'); return false;">AI Recommendation Engine</a></li>
+              <li><a href="#" onclick="switchView('dashboard'); return false;">Student Dashboard & Tracker</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="font-size:1rem; margin-bottom:1rem;">Official Portals</h4>
+            <ul style="list-style:none; font-size:0.88rem; display:flex; flex-direction:column; gap:0.5rem; color:var(--text-secondary);">
+              <li><a href="https://scholarships.gov.in" target="_blank" rel="noopener">National Scholarship Portal (NSP)</a></li>
+              <li><a href="https://mahadbt.maharashtra.gov.in" target="_blank" rel="noopener">MahaDBT State Portal</a></li>
+              <li><a href="https://ssp.postmatric.karnataka.gov.in" target="_blank" rel="noopener">SSP Karnataka Portal</a></li>
+              <li><a href="https://aicte-india.org" target="_blank" rel="noopener">AICTE Official Website</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style="font-size:1rem; margin-bottom:1rem;">Data Quality Notice</h4>
+            <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.5;">
+              🟢 <strong>Real Data Source:</strong> Scholarship records labeled with 🟢 Real Data represent authentic verified schemes. Always verify details on official portal links before submitting applications.
+            </p>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid var(--border-color); padding-top:1.5rem; text-align:center; font-size:0.85rem; color:var(--text-muted);">
+          © 2026 Scholarship & Fee Waiver Finder. Real Scholarship Data + Personal Profile + Eligibility Engine.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+      <div class="mobile-nav-item active" data-view="home">
+        <div class="mobile-nav-icon">🏠</div>
+        <span>Home</span>
+      </div>
+      <div class="mobile-nav-item" data-view="finder">
+        <div class="mobile-nav-icon">🔍</div>
+        <span>Search</span>
+      </div>
+      <div class="mobile-nav-item" data-view="ai-matches">
+        <div class="mobile-nav-icon">🤖</div>
+        <span>AI Match</span>
+      </div>
+      <div class="mobile-nav-item" data-view="documents">
+        <div class="mobile-nav-icon">📄</div>
+        <span>Docs</span>
+      </div>
+      <div class="mobile-nav-item" data-view="dashboard">
+        <div class="mobile-nav-icon">📊</div>
+        <span>Dashboard</span>
+      </div>
+    </nav>
+
+    <!-- Floating Comparison Bar -->
+    <div id="comparison-bar" class="comparison-bar" style="display:none;"></div>
+
+    <!-- Modal Dialog Overlay -->
+    <div id="detail-modal" class="modal-overlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div></div>
+          <button class="modal-close" onclick="closeModal('detail-modal')">&times;</button>
+        </div>
+        <div id="detail-modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="mockData.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
