@@ -393,6 +393,7 @@ function renderHomePage() {
       </div>
     </section>
 
+
     <section class="stats-bar">
       <div class="container">
         <div style="text-align:center; margin-bottom:1rem;">
